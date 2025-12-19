@@ -61,4 +61,12 @@ public class UserController {
         UserListResponse result = userService.update(id, request);
         return ResponseEntity.ok(new ApiSuccess<>("User updated successfully", result));
     }
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Delete a user by ID")
+    public ResponseEntity<ApiSuccess<String>> delete(
+            @PathVariable @Min(value = 1, message = ValidationMessages.ID_MIN_VALUE) Long id) {
+        userService.delete(id);
+        return ResponseEntity.ok(new ApiSuccess<>("User deleted successfully", null));
+    }
 }
