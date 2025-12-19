@@ -9,6 +9,8 @@ import com.doculens.user.dto.response.UserListResponse;
 import com.doculens.user.model.User;
 import com.doculens.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
@@ -34,7 +36,7 @@ public class UserService {
     @Transactional
     public UserListResponse create(CreateUserRequest request) {
         if (userRepository.findByEmail(request.email()).isPresent()) {
-            throw new IllegalArgumentException("Email already exists");
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Email already exists");
         }
 
         User user = new User();
@@ -53,10 +55,10 @@ public class UserService {
     public UserListResponse update(Long id, UpdateUserRequest request) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with ID: " + id));
-                
+
         if (!user.getEmail().equals(request.email())
                 && userRepository.findByEmail(request.email()).isPresent()) {
-            throw new IllegalArgumentException("Email already exists");
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Email already exists");
         }
 
         user.setEmail(request.email());
