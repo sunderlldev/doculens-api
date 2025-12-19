@@ -69,6 +69,13 @@ public class UserService {
         return toListResponse(updated);
     }
 
+    @Transactional
+    public void delete(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with ID: " + id));
+        userRepository.delete(user);
+    }
+
     private UserListResponse toListResponse(User user) {
         return new UserListResponse(
                 user.getId(),
