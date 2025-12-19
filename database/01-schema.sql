@@ -4,8 +4,11 @@ BEGIN;
 
 CREATE TABLE users (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    firebase_uid VARCHAR(128) UNIQUE NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
-    password_hash TEXT NOT NULL,
+    display_name VARCHAR(255),
+    photo_url TEXT,
+    email_verified BOOLEAN DEFAULT FALSE,
     role VARCHAR(20) DEFAULT 'USER' CHECK (role IN ('ADMIN', 'USER')),
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );

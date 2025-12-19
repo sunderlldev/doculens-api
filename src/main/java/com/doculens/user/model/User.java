@@ -16,11 +16,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, unique = true, length = 128)
+    private String firebaseUid;
+
     @Column(nullable = false, unique = true, length = 255)
     private String email;
 
-    @Column(nullable = false)
-    private String passwordHash;
+    private String displayName;
+
+    private String photoUrl;
+
+    private Boolean emailVerified = false;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)

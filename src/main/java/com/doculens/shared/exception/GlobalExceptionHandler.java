@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.doculens.shared.api.ApiError;
@@ -125,6 +126,17 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 request.getRequestURI());
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiError);
+    }
+
+    @ExceptionHandler(ResponseStatusException.class)
+    public ResponseEntity<ApiError> handleResponseStatus(ResponseStatusException ex, HttpServletRequest request) {
+        String message = ex.getReason() != null ? ex.getReason() : ex.getMessage();
+        ApiError apiError = new ApiError(
+                ex.getStatusCode().value(),
+                message,
+                request.getRequestURI());
+
+        return ResponseEntity.status(ex.getStatusCode()).body(apiError);
     }
 
     @ExceptionHandler(Exception.class)

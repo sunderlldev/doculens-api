@@ -2,22 +2,22 @@ SET search_path TO public;
 
 BEGIN;
 
-INSERT INTO users (email, password_hash, role, created_at) VALUES 
-('admin@doculens.pe', '$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewfzUf0wdG8OuJdm', 'ADMIN', NOW()),
-('usuario1@doculens.pe', '$2b$12$EixZxQz5UbrYdHqgqHl/JO4nrpxY/PnZsT0YnUGf3rGNrGNrGNrGN', 'USER', NOW()),
-('usuario2@doculens.pe', '$2b$12$HQqO8vTYmlnKEuTQSrToLeyH1aFPv2OfPzTgNfN.kL9vLkNrGNrGN', 'USER', NOW()),
-('usuario3@doculens.pe', '$2b$12$HQqO8vTYmlnKEuTQSrToLeyH1aFPv2OfPzTgNfN.kL9vLkNrGNrGN', 'USER', NOW()),
-('usuario4@doculens.pe', '$2b$12$HQqO8vTYmlnKEuTQSrToLeyH1aFPv2OfPzTgNfN.kL9vLkNrGNrGN', 'USER', NOW()),
-('usuario5@doculens.pe', '$2b$12$QrNfmP5tTYoFEu5QNrToLeyH1aFPv2OfPzTgNfN.kL9vLkNrGNrGN', 'USER', NOW()),
-('usuario6@doculens.pe', '$2b$12$QrNfmP5tTYoFEu5QNrToLeyH1aFPv2OfPzTgNfN.kL9vLkNrGNrGN', 'ADMIN', NOW()),
-('usuario7@doculens.pe', '$2b$12$QrNfmP5tTYoFEu5QNrToLeyH1aFPv2OfPzTgNfN.kL9vLkNrGNrGN', 'USER', NOW()),
-('usuario8@doculens.pe', '$2b$12$QrNfmP5tTYoFEu5QNrToLeyH1aFPv2OfPzTgNfN.kL9vLkNrGNrGN', 'USER', NOW()),
-('usuario9@doculens.pe', '$2b$12$QrNfmP5tTYoFEu5QNrToLeyH1aFPv2OfPzTgNfN.kL9vLkNrGNrGN', 'USER', NOW()),
-('usuario10@doculens.pe', '$2b$12$QrNfmP5tTYoFEu5QNrToLeyH1aFPv2OfPzTgNfN.kL9vLkNrGNrGN', 'USER', NOW()),
-('usuario11@doculens.pe', '$2b$12$HQqO8vTYmlnKEuTQSrToLeyH1aFPv2OfPzTgNfN.kL9vLkNrGNrGN', 'USER', NOW()),
-('usuario12@doculens.pe', '$2b$12$HQqO8vTYmlnKEuTQSrToLeyH1aFPv2OfPzTgNfN.kL9vLkNrGNrGN', 'USER', NOW()),
-('usuario13@doculens.pe', '$2b$12$HQqO8vTYmlnKEuTQSrToLeyH1aFPv2OfPzTgNfN.kL9vLkNrGNrGN', 'USER', NOW()),
-('usuario14@doculens.pe', '$2b$12$HQqO8vTYmlnKEuTQSrToLeyH1aFPv2OfPzTgNfN.kL9vLkNrGNrGN', 'USER', NOW());
+INSERT INTO users (firebase_uid, email, display_name, photo_url, email_verified, role, created_at) VALUES 
+('uid_admin', 'admin@doculens.pe', 'Admin', NULL, TRUE, 'ADMIN', NOW()),
+('uid_usuario1', 'usuario1@doculens.pe', 'Usuario 1', NULL, TRUE, 'USER', NOW()),
+('uid_usuario2', 'usuario2@doculens.pe', 'Usuario 2', NULL, TRUE, 'USER', NOW()),
+('uid_usuario3', 'usuario3@doculens.pe', 'Usuario 3', NULL, TRUE, 'USER', NOW()),
+('uid_usuario4', 'usuario4@doculens.pe', 'Usuario 4', NULL, TRUE, 'USER', NOW()),
+('uid_usuario5', 'usuario5@doculens.pe', 'Usuario 5', NULL, TRUE, 'USER', NOW()),
+('uid_usuario6', 'usuario6@doculens.pe', 'Usuario 6', NULL, TRUE, 'ADMIN', NOW()),
+('uid_usuario7', 'usuario7@doculens.pe', 'Usuario 7', NULL, TRUE, 'USER', NOW()),
+('uid_usuario8', 'usuario8@doculens.pe', 'Usuario 8', NULL, TRUE, 'USER', NOW()),
+('uid_usuario9', 'usuario9@doculens.pe', 'Usuario 9', NULL, TRUE, 'USER', NOW()),
+('uid_usuario10', 'usuario10@doculens.pe', 'Usuario 10', NULL, TRUE, 'USER', NOW()),
+('uid_usuario11', 'usuario11@doculens.pe', 'Usuario 11', NULL, TRUE, 'USER', NOW()),
+('uid_usuario12', 'usuario12@doculens.pe', 'Usuario 12', NULL, TRUE, 'USER', NOW()),
+('uid_usuario13', 'usuario13@doculens.pe', 'Usuario 13', NULL, TRUE, 'USER', NOW()),
+('uid_usuario14', 'usuario14@doculens.pe', 'Usuario 14', NULL, TRUE, 'USER', NOW());
 
 INSERT INTO folders (user_id, name, parent_id, created_at) VALUES 
 (1, 'Documentos', NULL, NOW()),
