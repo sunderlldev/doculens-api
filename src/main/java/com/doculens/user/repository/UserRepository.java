@@ -13,7 +13,9 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Query("""
         SELECT 
             u.id AS id,
+            u.firebaseUid AS firebaseUid,
             u.email AS email,
+            u.displayName AS displayName,
             u.role AS role,
             u.createdAt AS createdAt
         FROM User u
@@ -24,7 +26,11 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Query("""
         SELECT 
             u.id AS id,
+            u.firebaseUid AS firebaseUid,
             u.email AS email,
+            u.displayName AS displayName,
+            u.photoUrl AS photoUrl,
+            u.emailVerified AS emailVerified,
             u.role AS role,
             u.createdAt AS createdAt
         FROM User u
